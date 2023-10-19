@@ -11,7 +11,8 @@ const MessageContainer = styled.div`
   position: relative;
   max-height: 80vh;
   margin: 2.5rem 0;
-  width: 40%;
+
+  width: max(40%, 300px);
   background-color: grey;
   transform: translateX(75%);
   overflow-y: scroll;
@@ -22,6 +23,7 @@ const UlContainer = styled.ul`
   flex-direction: column;
   gap: 4rem;
   padding: 3rem;
+  width: 100%;
 `;
 
 function MainMessagingBox() {

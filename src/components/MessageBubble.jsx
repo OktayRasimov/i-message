@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { supabase } from "../Data/supabaseClient";
 
 const MessageBubbleContainer = styled.li`
-  width: 400px;
-  border-radius: 15%;
+  width: fit-content;
+  padding: 2rem;
+  border-radius: 15px;
   min-height: 80px;
   background-color: red;
   list-style: none;
