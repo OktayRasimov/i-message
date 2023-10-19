@@ -16,7 +16,13 @@ function TypeMessageContainer({ currUser }) {
   async function addMessage() {
     const { data, error } = await supabase
       .from("message")
-      .insert([{ message_content: typedMessage, created_at: currentTime }])
+      .insert([
+        {
+          message_content: typedMessage,
+          created_at: currentTime,
+          user_id: currUser.id,
+        },
+      ])
       .select();
   }
 

@@ -29,7 +29,7 @@ function MessageBubble({ message, currUser }) {
     <MessageBubbleContainer
       onClick={handleClick}
       ref={ref}
-      style={{ marginLeft: id == 65 ? "auto" : "" }}
+      style={{ marginLeft: user_id == currUser.id ? "auto" : "" }}
     >
       <h2>{message_content}</h2>
     </MessageBubbleContainer>

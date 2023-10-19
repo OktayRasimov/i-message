@@ -67,7 +67,7 @@ function MainMessagingBox() {
     <MessageContainer>
       <UlContainer>
         {messages.map((el) => (
-          <MessageBubble message={el} key={el.id} />
+          <MessageBubble currUser={currUser} message={el} key={el.id} />
         ))}
       </UlContainer>
       <TypeMessageContainer currUser={currUser} />
