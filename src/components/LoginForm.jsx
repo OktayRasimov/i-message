@@ -50,6 +50,12 @@ const StyledLoginBox = styled.form`
   button {
     color: var(--color-light-100);
   }
+  @media (width<=600px) {
+    width: 33rem;
+  }
+  @media (width<=400px) {
+    width: 23rem;
+  }
 `;
 
 function LoginForm() {
