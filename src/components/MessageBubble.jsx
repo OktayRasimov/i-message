@@ -10,8 +10,13 @@ const MessageBubbleContainer = styled.li`
 
 function MessageBubble({ message }) {
   const { id, created_at, message_content, user_id } = message;
+
+  function handleClick() {
+    console.log(created_at);
+  }
+
   return (
-    <MessageBubbleContainer>
+    <MessageBubbleContainer onClick={handleClick}>
       <h2>{message_content}</h2>
     </MessageBubbleContainer>
   );

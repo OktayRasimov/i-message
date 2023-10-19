@@ -2,6 +2,7 @@ import styled from "styled-components";
 import MessageBubble from "./MessageBubble";
 import { useEffect, useState } from "react";
 import { supabase } from "../Data/supabaseClient";
+import TypeMessageContainer from "./TypeMessageContainer";
 
 const Test = styled.ul`
   background-color: grey;
@@ -9,7 +10,7 @@ const Test = styled.ul`
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-
+  position: relative;
   gap: 4rem;
   width: 40%;
   transform: translateX(75%);
@@ -21,14 +22,15 @@ const Test = styled.ul`
 
 function MainMessagingBox() {
   const [messages, setMessages] = useState([]);
-
+  const [change, setChange] = useState();
   const realTimeMessage = supabase
     .channel("custom-all-channel")
     .on(
       "postgres_changes",
       { event: "*", schema: "public", table: "message" },
       (payload) => {
-        console.log("Change received!", payload);
+        console.log(payload);
+        setChange(payload.commit_timestamp);
       }
     )
     .subscribe();
@@ -42,8 +44,9 @@ function MainMessagingBox() {
         setMessages(message);
       }
       fetchMessages();
+      console.log(change);
     },
-    [realTimeMessage]
+    [change]
   );
 
   return (
@@ -51,6 +54,7 @@ function MainMessagingBox() {
       {messages.map((el) => (
         <MessageBubble message={el} key={el.id} />
       ))}
+      <TypeMessageContainer />
     </Test>
   );
 }
