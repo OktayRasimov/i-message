@@ -8,6 +8,32 @@
 
 ![mainpic](https://github.com/oktayrasimov/i-message/blob/main/src/images/i-message.png?raw=true)
 
+<h2>🛠️⛔</h2>
+
+<p> Still Work in progress,currently very barebones,main focus is on logic</p>
+
+Front End:
+
+- React
+- Styled-Components
+
+Back End:
+
+- Supabase
+- User Auth
+
+<h2>Future Updates ⬇⬇</h2>
+
+<p>V2</p>
+
+- extensive style changes
+- various messages features
+- account creating(not limited to 3)
+
+<p>V3</p>
+
+- Multiple chat rooms
+
 <h2>🛠️ Installation Steps:</h2>
 
 <p>1. Open a file thats not an active repo</p>
@@ -39,7 +65,3 @@ npm run dev
 ```
 
 <p>7. Then you can alt+leftClick the given link</p>
-
-<h2>🛠️⛔</h2>
-
-<p> Still Work in progress,currently very barebones,main focus is on logic</p>
