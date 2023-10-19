@@ -3,10 +3,12 @@ import MessageBubble from "./MessageBubble";
 import { useEffect, useState } from "react";
 import { supabase } from "../Data/supabaseClient";
 import TypeMessageContainer from "./TypeMessageContainer";
+import Logout from "./Logout";
 
 const MessageContainer = styled.div`
   min-height: 80vh;
   border-radius: 10px;
+  position: relative;
   max-height: 80vh;
   margin: 2.5rem 0;
   width: 40%;
@@ -71,6 +73,7 @@ function MainMessagingBox() {
         ))}
       </UlContainer>
       <TypeMessageContainer currUser={currUser} />
+      <Logout />
     </MessageContainer>
   );
 }

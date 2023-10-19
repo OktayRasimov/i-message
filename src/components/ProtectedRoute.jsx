@@ -8,15 +8,19 @@ function ProtectedRoute({ children }) {
 
   const navigate = useNavigate();
 
-  useEffect(function () {
-    async function getCurrUser() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      setCurrUser(user);
-    }
-    getCurrUser();
-  }, []);
+  useEffect(
+    function () {
+      async function getCurrUser() {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        setCurrUser(user);
+        if (!user) navigate("/");
+      }
+      getCurrUser();
+    },
+    [navigate]
+  );
 
   console.log(currUser);
 
