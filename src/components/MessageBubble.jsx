@@ -1,4 +1,6 @@
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
+import { supabase } from "../Data/supabaseClient";
 
 const MessageBubbleContainer = styled.li`
   width: 400px;
@@ -8,15 +10,27 @@ const MessageBubbleContainer = styled.li`
   list-style: none;
 `;
 
-function MessageBubble({ message }) {
+function MessageBubble({ message, currUser }) {
   const { id, created_at, message_content, user_id } = message;
 
+  const ref = useRef();
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  }, []);
+
   function handleClick() {
-    console.log(created_at);
+    console.log(currUser);
   }
 
   return (
-    <MessageBubbleContainer onClick={handleClick}>
+    <MessageBubbleContainer
+      onClick={handleClick}
+      ref={ref}
+      style={{ marginLeft: id == 65 ? "auto" : "" }}
+    >
       <h2>{message_content}</h2>
     </MessageBubbleContainer>
   );

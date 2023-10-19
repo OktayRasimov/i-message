@@ -4,25 +4,29 @@ import { useEffect, useState } from "react";
 import { supabase } from "../Data/supabaseClient";
 import TypeMessageContainer from "./TypeMessageContainer";
 
-const Test = styled.ul`
+const MessageContainer = styled.div`
+  min-height: 80vh;
+  border-radius: 10px;
+  max-height: 80vh;
+  margin: 2.5rem 0;
+  width: 40%;
   background-color: grey;
-  min-height: 90vh;
-  max-height: 90vh;
+  transform: translateX(75%);
+  overflow-y: scroll;
+`;
+
+const UlContainer = styled.ul`
   display: flex;
   flex-direction: column;
-  position: relative;
   gap: 4rem;
-  width: 40%;
-  transform: translateX(75%);
-  margin: 2.5rem 0;
   padding: 3rem;
-  border-radius: 10px;
-  overflow-y: scroll;
 `;
 
 function MainMessagingBox() {
   const [messages, setMessages] = useState([]);
   const [change, setChange] = useState();
+  const [currUser, setCurrUser] = useState();
+
   const realTimeMessage = supabase
     .channel("custom-all-channel")
     .on(
@@ -49,13 +53,25 @@ function MainMessagingBox() {
     [change]
   );
 
+  useEffect(function () {
+    async function logged() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setCurrUser(user);
+    }
+    logged();
+  }, []);
+
   return (
-    <Test>
-      {messages.map((el) => (
-        <MessageBubble message={el} key={el.id} />
-      ))}
-      <TypeMessageContainer />
-    </Test>
+    <MessageContainer>
+      <UlContainer>
+        {messages.map((el) => (
+          <MessageBubble message={el} key={el.id} />
+        ))}
+      </UlContainer>
+      <TypeMessageContainer currUser={currUser} />
+    </MessageContainer>
   );
 }
 

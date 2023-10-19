@@ -4,16 +4,12 @@ import { useState } from "react";
 import { supabase } from "../Data/supabaseClient";
 
 const TypeMessageBox = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 30%;
-
   textarea {
     width: 25rem;
   }
 `;
 
-function TypeMessageContainer() {
+function TypeMessageContainer({ currUser }) {
   const [typedMessage, setTypedMessage] = useState("");
   const [currentTime, setCurrentTime] = useState("");
 
@@ -30,6 +26,7 @@ function TypeMessageContainer() {
     const hour = dateFull.getHours();
     const minute = dateFull.getMinutes();
     const seconds = dateFull.getSeconds();
+
     const finalTime = `${hour}:${minute}:${seconds}`;
     setCurrentTime(finalTime);
     addMessage();
