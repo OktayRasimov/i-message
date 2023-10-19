@@ -6,24 +6,24 @@ import TypeMessageContainer from "./TypeMessageContainer";
 import Logout from "./Logout";
 
 const MessageContainer = styled.div`
-  min-height: 80vh;
   border-radius: 10px;
   position: relative;
-  max-height: 80vh;
+  min-height: 90vh;
+  max-height: 90vh;
+  width: 80%;
   margin: 2.5rem 0;
-
-  width: max(40%, 300px);
   background-color: grey;
-  transform: translateX(75%);
-  overflow-y: scroll;
 `;
 
 const UlContainer = styled.ul`
   display: flex;
+  min-height: 80vh;
+  max-height: 80vh;
   flex-direction: column;
   gap: 4rem;
-  padding: 3rem;
+  padding: 3rem 2rem 0 2rem;
   width: 100%;
+  overflow-y: scroll;
 `;
 
 function MainMessagingBox() {
@@ -75,6 +75,7 @@ function MainMessagingBox() {
         ))}
       </UlContainer>
       <TypeMessageContainer currUser={currUser} />
+
       <Logout />
     </MessageContainer>
   );

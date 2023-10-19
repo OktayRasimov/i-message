@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { supabase } from "../Data/supabaseClient";
 
 const MessageBubbleContainer = styled.li`
-  width: fit-content;
   padding: 2rem;
   border-radius: 15px;
-  min-height: 80px;
+  width: fit-content;
+  max-width: 40rem;
+
+  block-size: fit-content;
   background-color: red;
   list-style: none;
 `;
@@ -30,7 +32,10 @@ function MessageBubble({ message, currUser }) {
     <MessageBubbleContainer
       onClick={handleClick}
       ref={ref}
-      style={{ marginLeft: user_id == currUser.id ? "auto" : "" }}
+      style={{
+        marginLeft: user_id == currUser.id ? "auto" : "",
+        backgroundColor: user_id == currUser.id ? "#fff" : "#dcf4f2",
+      }}
     >
       <h2>{message_content}</h2>
     </MessageBubbleContainer>

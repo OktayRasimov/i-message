@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MainMessagingBox from "./components/MainMessagingBox";
-
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Lobby from "./pages/Lobby";
 
 function App() {
   return (
@@ -13,7 +12,7 @@ function App() {
           path="/Lobby"
           element={
             <ProtectedRoute>
-              <MainMessagingBox />
+              <Lobby />
             </ProtectedRoute>
           }
         />

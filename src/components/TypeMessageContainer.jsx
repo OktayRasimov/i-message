@@ -4,8 +4,11 @@ import { useState } from "react";
 import { supabase } from "../Data/supabaseClient";
 
 const TypeMessageBox = styled.div`
+  background-color: green;
+
   textarea {
-    width: 25rem;
+    width: 70%;
+    height: 80px;
   }
 `;
 
@@ -27,6 +30,7 @@ function TypeMessageContainer({ currUser }) {
   }
 
   function handleAddMessage() {
+    if (!typedMessage) return;
     console.log(typedMessage);
     const dateFull = new Date();
     const hour = dateFull.getHours();
