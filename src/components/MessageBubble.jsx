@@ -8,10 +8,11 @@ const MessageBubbleContainer = styled.li`
   list-style: none;
 `;
 
-function MessageBubble() {
+function MessageBubble({ message }) {
+  const { id, created_at, message_content, user_id } = message;
   return (
     <MessageBubbleContainer>
-      <h2>bubble</h2>
+      <h2>{message_content}</h2>
     </MessageBubbleContainer>
   );
 }
